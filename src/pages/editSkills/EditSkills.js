@@ -68,11 +68,24 @@ export const EditSkills = () => {
   }, [skills]);
 
   const handleDeleteChip = (event, type, selectedElement) => {
-    event.stopPropagation();
     if (type === "selectedSkills") {
       let newSkills = [...selectedSkills];
       newSkills = newSkills.filter((item) => item._id !== selectedElement._id);
       setSelectedSkills(newSkills);
+    }
+    if (type === "selectedSubjects") {
+      let newSubjects = [...selectedSubjects];
+      newSubjects = newSubjects.filter(
+        (item) => item._id !== selectedElement._id
+      );
+      setSelectedSubjects(newSubjects);
+    }
+    if (type === "selectedHobbies") {
+      let newHobbies = [...selectedHobbies];
+      newHobbies = newHobbies.filter(
+        (item) => item._id !== selectedElement._id
+      );
+      setSelectedHobbies(newHobbies);
     }
   };
 
@@ -85,8 +98,6 @@ export const EditSkills = () => {
         multiple
         value={selectedSkills}
         onChange={(event) => setSelectedSkills(event.target.value)}
-        native={false}
-        displayEmpty={true}
         fullWidth
         renderValue={(values) =>
           values.map((item) => (
@@ -94,6 +105,9 @@ export const EditSkills = () => {
               color="primary"
               key={item._id}
               label={item.value}
+              onMouseDown={(event) => {
+                event.stopPropagation();
+              }}
               onDelete={(event) =>
                 handleDeleteChip(event, "selectedSkills", item)
               }
@@ -123,6 +137,9 @@ export const EditSkills = () => {
               color="primary"
               key={item._id}
               label={item.value}
+              onMouseDown={(event) => {
+                event.stopPropagation();
+              }}
               onDelete={(event) =>
                 handleDeleteChip(event, "selectedHobbies", item)
               }
@@ -150,6 +167,9 @@ export const EditSkills = () => {
               color="primary"
               key={item._id}
               label={item.value}
+              onMouseDown={(event) => {
+                event.stopPropagation();
+              }}
               onDelete={(event) =>
                 handleDeleteChip(event, "selectedSubjects", item)
               }
