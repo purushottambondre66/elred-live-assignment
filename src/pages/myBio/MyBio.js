@@ -64,28 +64,36 @@ export const MyBio = () => {
           </IconButton>
         </div>
       </div>
-      <div className={classes.skillLabel}>
-        I am incredible at these skills / professionally great at
-      </div>
-      <div className={classes.chipContainer}>
-        {skills.selectedSkills.map((item) => (
-          <Chip color="primary" key={item._id} label={item.value} />
-        ))}
-      </div>
-      <hr color="#dcdcdc" />
-      <div className={classes.skillLabel}>Hobbies I am passionate about</div>
-      <div className={classes.chipContainer}>
-        {skills.selectedHobbies.map((item) => (
-          <Chip color="primary" key={item._id} label={item.value} />
-        ))}
-      </div>
-      <hr color="#dcdcdc" />
-      <div className={classes.skillLabel}>My Favorite Subjects Are</div>
-      <div className={classes.chipContainer}>
-        {skills.selectedSubjects.map((item) => (
-          <Chip color="primary" key={item._id} label={item.value} />
-        ))}
-      </div>
+      {skills.selectedSkills ? (
+        <>
+          <div className={classes.skillLabel}>
+            I am incredible at these skills / professionally great at
+          </div>
+          <div className={classes.chipContainer}>
+            {skills.selectedSkills.map((item) => (
+              <Chip color="primary" key={item._id} label={item.value} />
+            ))}
+          </div>
+          <hr color="#dcdcdc" />
+          <div className={classes.skillLabel}>
+            Hobbies I am passionate about
+          </div>
+          <div className={classes.chipContainer}>
+            {skills.selectedHobbies.map((item) => (
+              <Chip color="primary" key={item._id} label={item.value} />
+            ))}
+          </div>
+          <hr color="#dcdcdc" />
+          <div className={classes.skillLabel}>My Favorite Subjects Are</div>
+          <div className={classes.chipContainer}>
+            {skills.selectedSubjects.map((item) => (
+              <Chip color="primary" key={item._id} label={item.value} />
+            ))}
+          </div>
+        </>
+      ) : (
+        <div className={classes.noDataMessage}>No soft skills added yet</div>
+      )}
     </>
   );
 };
