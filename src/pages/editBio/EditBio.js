@@ -38,6 +38,18 @@ const BloodGroupList = [
   },
 ];
 
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+
+// pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.js';
+// pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+//   "pdfjs-dist/build/pdf.worker.min.js",
+//   import.meta.url
+// ).toString();
+
+// pdfjs.GlobalWorkerOptions.workerPort = new Worker(
+//   "pdfjs-dist/build/pdf.worker.entry.js"
+// );
+
 export const EditBio = () => {
   const [aboutMe, setAboutMe] = useState("");
   const { classes } = useStyles();
@@ -49,11 +61,6 @@ export const EditBio = () => {
   const [bloodGroup, setBloodGroup] = useState("");
   const { bioDetails, setBioDetails } = useContext(AppContext);
   const navigate = useNavigate();
-
-  pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-    "pdfjs-dist/build/pdf.worker.min.js",
-    import.meta.url
-  ).toString();
 
   const handleFileChange = (event) => {
     let file = event.target.files[0];
